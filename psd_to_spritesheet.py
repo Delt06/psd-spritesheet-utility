@@ -1,6 +1,7 @@
 import sys
 import subprocess
 from subprocess import Popen, PIPE
+import os
 
 psd_path = './input.psd'
 
@@ -43,4 +44,10 @@ print('Creating PNG...')
 subprocess.call('magick convert %s +append "%s_spritesheet.png"' % (temp_images_joint, psd_path))
 print('Creating PSD...')
 subprocess.call('magick convert %s +append "%s_spritesheet.psd"' % (temp_images_joint, psd_path))
+
+print('Cleaning up...')
+
+for i in range(1, number_of_layers):
+    os.remove(get_temp_file_name(i))
+
 print('Done.')
