@@ -20,7 +20,7 @@ proc = Popen(
 )
 
 proc.wait()
-res = proc.communicate()  # получить tuple('stdout', 'stderr')
+res = proc.communicate()  # tuple('stdout', 'stderr')
 if proc.returncode:
     print(res[1])
 
